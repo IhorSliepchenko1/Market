@@ -1,0 +1,26 @@
+.imgSlider {
+  width: 160vh;
+}
+
+#swiper {
+  width: 1600rem;
+  max-height: 280rem;
+  position: relative;
+  top: 65px;
+  margin-bottom: 20px;
+
+  @include tablet {
+    width: 900rem;
+    max-height: 180rem;
+  }
+
+  @include tablet-small {
+    top: 38px;
+    max-height: 150rem;
+  }
+}
+
+#active {
+  display: flex;
+  justify-content: center;
+}

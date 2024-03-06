@@ -1,0 +1,135 @@
+.img_container {
+  width: 320px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: var(--White);
+  text-align: center;
+  border: 1px solid rgba(128, 128, 128, 0.616);
+
+  @media (max-width: 992px) {
+    max-width: 250rem;
+  }
+}
+.img_slot {
+  margin: 40rem 0;
+  padding-bottom: 20rem;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: 100%;
+    background: rgb(94, 92, 92);
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.title {
+  font-size: 25rem;
+  font-weight: 600;
+  color: rgb(75, 74, 74);
+  margin-bottom: 5px;
+
+  @media (max-width: 400px) {
+    font-size: 20rem;
+  }
+}
+
+.price_container {
+  padding: 5px;
+  display: grid;
+  gap: 10px;
+}
+
+.subtitle {
+  font-size: 22rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 400px) {
+    font-size: 18rem;
+  }
+}
+
+.price {
+  font-size: 18rem;
+  color: #7fad39;
+
+  @media (max-width: 400px) {
+    font-size: 16rem;
+  }
+}
+.counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding: 5px;
+}
+.button_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid grey;
+}
+.count {
+  font-size: 17rem;
+  font-weight: 700;
+  // border-left: 1px solid #7fad39;
+  // border-right: 1px solid #7fad39;
+  // padding: 10px;
+}
+.button {
+  cursor: pointer;
+
+  background: transparent;
+}
+
+.img_basket {
+  cursor: pointer;
+}
+
+.total {
+  margin-top: 10px;
+  font-size: 19rem;
+  span {
+    color: #7fad39;
+    font-weight: bold;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 16rem;
+  }
+}
+
+.desc {
+  font-size: 20rem;
+  color: grey;
+
+  @media (max-width: 400px) {
+    font-size: 16rem;
+  }
+}
+
+.info {
+  margin-bottom: 25rem;
+}
+.desc_num {
+  font-weight: 600;
+  color: var(--Black);
+}
+
+.button_slot {
+  display: grid;
+  margin-inline: auto;
+}
+
+.img_math {
+  width: 40rem;
+  height: 40rem;
+}

@@ -1,0 +1,22 @@
+// breakpoints
+$desktop-small: 1200px;
+$tablet: 992px;
+$tablet-small: 768px;
+$mobile: 576px;
+
+:root {
+  // * --fonts-- * \\
+  --ff: "Montserrat", sans-serif;
+
+  // animations
+  --transition: 0.2s all ease-in-out;
+
+  // colors
+  --White: #fff;
+  --Black: #000;
+  --Grey: #505050;
+
+  --MainGreen: #1db309;
+  --Teal: teal;
+  --Body-bg: #e5e5e5;
+}

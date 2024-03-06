@@ -1,0 +1,46 @@
+.footer {
+  background: var(--Black);
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  &__contacts {
+    display: flex;
+    gap: 20px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--White);
+    border: 1px solid transparent;
+    padding: 5px;
+    transition: var(--transition);
+    font-size: 15rem;
+    line-height: 2;
+    &:hover {
+      border: 1px solid var(--White);
+      padding: 5px;
+    }
+
+    img {
+      max-width: 30px;
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    margin: 10px 0;
+    color: var(--White);
+    font-size: 15rem;
+  }
+}

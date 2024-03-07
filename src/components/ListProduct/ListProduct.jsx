@@ -6,24 +6,17 @@ import img2 from "./../../assets/ProductImage/vegetables.png";
 
 const ListProduct = () => {
   const [success, setSuccess] = useState(false);
-  const [arr, setArr] = useState([]);
+  const [arr, setArr] = useState(() => {
+    const storedArr = localStorage.getItem("cart");
+    return storedArr ? JSON.parse(storedArr) : [];
+  });
 
   const handleClick = (el, total, count) => {
     setArr((prevArr) => [...prevArr, { el, total, count }]);
   };
 
-  console.log(arr);
   useEffect(() => {
-    arr.forEach((item, index) => {
-      const localStor = {
-        sum: item.total,
-        count: item.count,
-        img: item.el.img,
-        name: item.el.name,
-      };
-
-      localStorage.setItem(`slot_${index}`, JSON.stringify(localStor));
-    });
+    localStorage.setItem("cart", JSON.stringify(arr));
   }, [arr]);
 
   let [count, setCount] = useState(0.5);

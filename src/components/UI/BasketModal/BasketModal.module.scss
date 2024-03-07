@@ -15,12 +15,65 @@
   padding-top: 150px;
 }
 .myModalContent {
-  padding: 30rem;
+  padding: 40px 10px 10px 10px;
   border-radius: 16px;
   background: var(--White);
-  max-width: 550px;
+  max-width: 650px;
   width: 100%;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
+  @media (max-width: 750px) {
+    max-width: 500px;
+  }
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid teal;
+}
+.title {
+  font-size: 20px;
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
+}
+.name_slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.money_container {
+  line-height: 30px;
+}
+.image_slot,
+.image {
+  width: 60px;
+}
+
+.count,
+.total {
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
+
+  @media (max-width: 750px) {
+    font-size: 16px;
+  }
+}
+.money_info {
+  display: flex;
+  gap: 10px;
+}
+
+.close {
+  position: relative;
+  left: 630px;
+  top: 10px;
+  cursor: pointer;
 }

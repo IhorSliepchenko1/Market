@@ -9,15 +9,34 @@ const Header = () => {
   const [modal, setModal] = useState(false);
   const [modalBasket, setModalBasket] = useState(false);
   const [local, setLocal] = useState([]);
+  const [sum, setSum] = useState(0);
+  const [basketCount, setBasketCount] = useState(0);
+  const storedData = localStorage.getItem("cart");
 
+  const deleteBasketEl = (index) => {
+    const updatedCart = [...local];
+    updatedCart.splice(index, 1);
+    setLocal(updatedCart);
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
   useEffect(() => {
-    const storedData = localStorage.getItem("cart");
-
     if (storedData) {
       setLocal(JSON.parse(storedData));
     }
-    console.log(JSON.parse(storedData));
-  }, []);
+  }, [storedData]);
+
+  useEffect(() => {
+    const arrSum = [];
+    local.forEach((el) => {
+      arrSum.push(el.total);
+    });
+    setSum(arrSum.reduce((a, b) => a + b, 0));
+  }, [local]);
+
+  useEffect(() => {
+    setBasketCount(local.length);
+  }, [storedData]);
   return (
     <>
       <header className="header">
@@ -33,10 +52,9 @@ const Header = () => {
                 </a>
               </li>
 
-              <li className="header__li">
-                <a className="header__a" onClick={() => setModalBasket(true)}>
-                  Кошик
-                </a>
+              <li className="header__li" onClick={() => setModalBasket(true)}>
+                <span className="material-icons shop">shopping_cart</span>
+                <span className="basketCount">{basketCount}</span>
               </li>
             </ul>
           </div>
@@ -49,15 +67,19 @@ const Header = () => {
       <BasketModal
         visibleBasket={modalBasket}
         setVisibleBasket={setModalBasket}
+        local={local}
+        sum={sum}
       >
         {local && local.length > 0 ? (
           local.map((product, index) => (
             <BasketModalContent
+              id={index}
               key={index}
               image={product.el.img}
               name={product.el.name}
               count={product.count}
               total={product.total}
+              deleteItem={deleteBasketEl}
             />
           ))
         ) : (

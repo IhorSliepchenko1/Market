@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import cl from "./ProductCard.module.scss";
 import ButtonBasket from "./../button/ButtonBasket/ButtonBasket";
 import minus from "./../../../assets/ProductImage/minus.svg";
@@ -6,7 +8,7 @@ import plus from "./../../../assets/ProductImage/plus.svg";
 const ProductCard = ({
   name,
   min,
-  retails,
+  retail,
   wholeSale,
   id,
   img,
@@ -17,7 +19,14 @@ const ProductCard = ({
   increment,
   total,
   el,
+  setTotal,
 }) => {
+  useEffect(() => {
+    setTotal(el.retail * count);
+    if (el.retail * count >= el.wholeSale * el.min) {
+      setTotal(el.wholeSale * count);
+    }
+  }, [count]);
   return (
     <>
       <div className={cl.img_container} id={id}>
@@ -34,7 +43,7 @@ const ProductCard = ({
           <div className={cl.price_container}>
             <div className={`${cl.subtitle} ${cl.border}`}>
               <span>Роздріб:</span>
-              <span className={cl.price}>{retails} грн.</span>
+              <span className={cl.price}>{retail} грн.</span>
             </div>
 
             <div className={cl.subtitle}>
@@ -46,29 +55,25 @@ const ProductCard = ({
         <div className={cl.counter}>
           <div className={cl.button_slot}>
             <div className={cl.button_container}>
-              <button className={cl.button}>
-                <img
-                  src={minus}
-                  alt="minus"
-                  className={cl.img_math}
-                  onClick={() => {
-                    decrement;
-                    console.log("decrement");
-                  }}
-                />
+              <button
+                className={cl.button}
+                onClick={() => {
+                  decrement();
+                  console.log("minus");
+                }}
+              >
+                <img src={minus} alt="minus" className={cl.img_math} />
               </button>
               <div className={cl.count}>{count}</div>
               <div>
-                <button className={cl.button}>
-                  <img
-                    src={plus}
-                    alt="plus"
-                    className={cl.img_math}
-                    onClick={() => {
-                      increment;
-                      console.log("decrement");
-                    }}
-                  />
+                <button
+                  className={cl.button}
+                  onClick={() => {
+                    increment();
+                    console.log("plus");
+                  }}
+                >
+                  <img src={plus} alt="plus" className={cl.img_math} />
                 </button>
               </div>
             </div>
@@ -78,8 +83,8 @@ const ProductCard = ({
                 setSuccess={setSuccess}
                 handleClick={handleClick}
                 el={el}
-                total={total}
                 count={count}
+                total={total}
               />
             </div>
           </div>

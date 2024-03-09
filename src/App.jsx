@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="wrapper">
       <Header />
-      <SwiperUI />
+      {/* <SwiperUI /> */}
       <main className="main container">
         <ListProduct />
       </main>

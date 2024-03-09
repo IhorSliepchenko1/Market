@@ -5,11 +5,112 @@ import img from "./../../assets/ProductImage/product.png";
 import img2 from "./../../assets/ProductImage/vegetables.png";
 
 const ListProduct = () => {
+  const products = [
+    {
+      type: "fruit",
+      name: "Назва",
+      img: img,
+      retail: 100,
+      wholeSale: 90,
+      min: 5,
+    },
+    {
+      type: "fruit",
+      name: "Назва",
+      img: img,
+      retail: 150,
+      wholeSale: 120,
+      min: 15,
+    },
+    {
+      type: "fruit",
+      name: "Назва",
+      img: img,
+      retail: 290,
+      wholeSale: 275,
+      min: 25,
+    },
+    {
+      type: "fruit",
+      name: "Назва",
+      img: img,
+      retail: 310,
+      wholeSale: 300,
+      min: 35,
+    },
+    {
+      type: "fruit",
+      name: "Назва",
+      img: img,
+      retail: 400,
+      wholeSale: 394,
+      min: 50,
+    },
+    {
+      type: "fruit",
+      name: "Назва",
+      img: img,
+      retail: 500,
+      wholeSale: 455,
+      min: 10,
+    },
+    {
+      type: "vegetable",
+      name: "Назва",
+      img: img2,
+      retail: 100,
+      wholeSale: 90,
+      min: 5,
+    },
+    {
+      type: "vegetable",
+      name: "Назва",
+      img: img2,
+      retail: 150,
+      wholeSale: 120,
+      min: 15,
+    },
+    {
+      type: "vegetable",
+      name: "Назва",
+      img: img2,
+      retail: 290,
+      wholeSale: 275,
+      min: 25,
+    },
+    {
+      type: "vegetable",
+      name: "Назва",
+      img: img2,
+      retail: 310,
+      wholeSale: 300,
+      min: 35,
+    },
+    {
+      type: "vegetable",
+      name: "Назва",
+      img: img2,
+      retail: 400,
+      wholeSale: 394,
+      min: 50,
+    },
+    {
+      type: "vegetable",
+      name: "Назва",
+      img: img2,
+      retail: 500,
+      wholeSale: 455,
+      min: 10,
+    },
+  ];
   const [success, setSuccess] = useState(false);
   const [arr, setArr] = useState(() => {
     const storedArr = localStorage.getItem("cart");
     return storedArr ? JSON.parse(storedArr) : [];
   });
+
+  const [count, setCount] = useState(products.map(() => 0.5));
+  const [total, setTotal] = useState(products.map(() => 0));
 
   const handleClick = (el, total, count) => {
     setArr((prevArr) => [...prevArr, { el, total, count }]);
@@ -19,185 +120,80 @@ const ListProduct = () => {
     localStorage.setItem("cart", JSON.stringify(arr));
   }, [arr]);
 
-  let [count, setCount] = useState(0.5);
-  const [total, setTotal] = useState(0);
-  const [retail] = useState(0);
-  const [wholesale] = useState(0);
-  const [minWholesale] = useState(0);
-
-  const increment = () => {
+  const increment = (index) => {
     setCount((prevCount) => {
-      const newCount = prevCount + 1;
-      countQuantity(newCount);
+      const newCount = [...prevCount];
+      newCount[index] += 0.5;
       return newCount;
     });
   };
 
-  const decrement = () => {
+  const decrement = (index) => {
     setCount((prevCount) => {
-      const newCount = prevCount > 0.5 ? prevCount - 0.5 : 0.5;
-      countQuantity(newCount);
+      const newCount = [...prevCount];
+      newCount[index] = newCount[index] > 0.5 ? newCount[index] - 0.5 : 0.5;
       return newCount;
     });
   };
 
-  const countQuantity = (newCount) => {
-    setTotal(retail * newCount);
-
-    if (retail * newCount >= wholesale * minWholesale) {
-      setTotal(wholesale * newCount);
-    }
+  const updateTotal = (index, total) => {
+    setTotal((prevTotal) => {
+      const newTotal = [...prevTotal];
+      newTotal[index] = total;
+      return newTotal;
+    });
   };
 
-  const products = [
-    {
-      type: "fruit",
-      name: "Назва",
-      img: img,
-      retails: 100,
-      wholeSale: 90,
-      min: 5,
-    },
-    {
-      type: "fruit",
-      name: "Назва",
-      img: img,
-      retails: 150,
-      wholeSale: 120,
-      min: 15,
-    },
-    {
-      type: "fruit",
-      name: "Назва",
-      img: img,
-      retails: 290,
-      wholeSale: 275,
-      min: 25,
-    },
-    {
-      type: "fruit",
-      name: "Назва",
-      img: img,
-      retails: 310,
-      wholeSale: 300,
-      min: 35,
-    },
-    {
-      type: "fruit",
-      name: "Назва",
-      img: img,
-      retails: 400,
-      wholeSale: 394,
-      min: 50,
-    },
-    {
-      type: "fruit",
-      name: "Назва",
-      img: img,
-      retails: 500,
-      wholeSale: 455,
-      min: 10,
-    },
-    {
-      type: "vegetable",
-      name: "Назва",
-      img: img2,
-      retails: 100,
-      wholeSale: 90,
-      min: 5,
-    },
-    {
-      type: "vegetable",
-      name: "Назва",
-      img: img2,
-      retails: 150,
-      wholeSale: 120,
-      min: 15,
-    },
-    {
-      type: "vegetable",
-      name: "Назва",
-      img: img2,
-      retails: 290,
-      wholeSale: 275,
-      min: 25,
-    },
-    {
-      type: "vegetable",
-      name: "Назва",
-      img: img2,
-      retails: 310,
-      wholeSale: 300,
-      min: 35,
-    },
-    {
-      type: "vegetable",
-      name: "Назва",
-      img: img2,
-      retails: 400,
-      wholeSale: 394,
-      min: 50,
-    },
-    {
-      type: "vegetable",
-      name: "Назва",
-      img: img2,
-      retails: 500,
-      wholeSale: 455,
-      min: 10,
-    },
-  ];
+  const fruitProducts = products.filter((product) => product.type === "fruit");
+  const vegetableProducts = products.filter(
+    (product) => product.type === "vegetable"
+  );
   return (
     <>
       <div className="card-container">
         <h3 className="title-product">Фрукти</h3>
         <div className="product-container">
-          {products.map((product, index) => (
+          {fruitProducts.map((product, index) => (
             <ProductCard
               key={index}
+              el={product}
               id={index}
               name={product.name}
               min={product.min}
-              retails={product.retails}
+              retail={product.retail}
               wholeSale={product.wholeSale}
               img={product.img}
               setSuccess={setSuccess}
               handleClick={handleClick}
-              decrement={decrement}
-              increment={increment}
-              total={total}
-              el={product}
-              count={count}
+              decrement={() => decrement(index)}
+              increment={() => increment(index)}
+              total={total[index]}
+              count={count[index]}
+              setTotal={(total) => updateTotal(index, total)}
             />
           ))}
-
-          {/* {fruit.map((item, index) => (
-            <ProductCard
-              key={index}
-              img={item.img}
-              retails={item.retails}
-              wholeSale={item.wholeSale}
-              min={item.min}
-              setSuccess={setSuccess}
-              el={item}
-              handleClick={() => handleClick(item)}
-            />
-          ))} */}
         </div>
         <h3 className="title-product">Овочі</h3>
         <div className="product-container">
-          {/* {vegetables.map((item, index) => (
+          {vegetableProducts.map((product, index) => (
             <ProductCard
               key={index}
-              img={item.img}
-              retails={item.retails}
-              wholeSale={item.wholeSale}
-              min={item.min}
+              el={product}
+              id={index}
+              name={product.name}
+              min={product.min}
+              retail={product.retail}
+              wholeSale={product.wholeSale}
+              img={product.img}
               setSuccess={setSuccess}
-              el={item}
-              handleClick={(total) => handleClick(item, total)}
+              handleClick={handleClick}
+              decrement={() => decrement(index)}
+              increment={() => increment(index)}
+              total={total[index]}
+              count={count[index]}
+              setTotal={(total) => updateTotal(index, total)}
             />
-          ))} */}
+          ))}
         </div>
       </div>
       {success && <Popup onClick={() => setSuccess(false)} />}

@@ -58,6 +58,10 @@
   cursor: pointer;
   font-size: 35px;
   transition: var(--transition);
+
+  @include tablet-small {
+    font-size: 25px;
+  }
   &:hover {
     opacity: 0.7;
   }
@@ -67,9 +71,12 @@
   font-size: 25px;
   font-weight: bold;
   color: red;
+
+  @include tablet-small {
+    font-size: 16px;
+  }
 }
 
-.slot-basket{
+.slot-basket {
   width: 70px;
 }
-

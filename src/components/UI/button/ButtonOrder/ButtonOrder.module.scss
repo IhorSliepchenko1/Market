@@ -7,6 +7,10 @@
   cursor: pointer;
   color: white;
   transition: 0.2s ease-in-out;
+
+  @media (max-width: 750px) {
+    font-size: 15px;
+  }
   &:hover {
     opacity: 0.8;
   }

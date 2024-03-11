@@ -15,16 +15,16 @@
   padding-top: 150px;
 }
 .myModalContent {
-  padding: 40px 10px 10px 10px;
-  border-radius: 16px;
+  padding: 10px 3px;
+  border-radius: 5px;
   background: var(--White);
-  max-width: 650px;
-  width: 100%;
+  max-width: 550px;
+  min-width: 550px;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
   @media (max-width: 750px) {
-    max-width: 500px;
+    min-width: 380px;
   }
 }
 
@@ -60,7 +60,8 @@
 .total {
   font-size: 20px;
   display: flex;
-  gap: 10px;
+  width: 160px;
+  justify-content: space-between;
 
   @media (max-width: 750px) {
     font-size: 16px;
@@ -73,10 +74,11 @@
 }
 
 .close {
-  position: relative;
-  left: 630px;
-  top: 10px;
   cursor: pointer;
+  display: grid;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  margin-right: 4px;
 }
 
 .remove {
@@ -102,8 +104,18 @@
   font-size: 22px;
   font-weight: bold;
   padding: 10px 0;
+
+  @media (max-width: 750px) {
+    font-size: 18px;
+  }
 }
 
 .span {
   color: #67aa03;
+}
+
+.overlov {
+  max-height: 900px;
+  overflow: auto;
+  background: #eceaeacc;
 }

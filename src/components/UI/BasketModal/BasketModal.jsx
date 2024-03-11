@@ -19,12 +19,12 @@ const BasketModal = ({
       className={rootClasses.join(" ")}
       onClick={() => setVisibleBasket(false)}
     >
-      <div className={cl.close}>
-        <img src={cross} />
-      </div>
-
       <div className={cl.myModalContent} onClick={(e) => e.stopPropagation()}>
-        {children}
+        <div className={cl.close} onClick={() => setVisibleBasket(false)}>
+          <img src={cross} />
+        </div>
+
+        <div className={cl.overlov}> {children}</div>
 
         {local && local.length > 0 ? (
           <div className={cl.container_sum}>

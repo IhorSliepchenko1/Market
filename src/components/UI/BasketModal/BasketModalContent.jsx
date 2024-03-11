@@ -6,11 +6,13 @@ const BasketModalContent = ({ name, image, count, total, id, deleteItem }) => {
       <div className={cl.info}>
         <div className={cl.name_slot}>
           <div className={cl.id}>{id + 1}</div>
-          <div className={cl.image_slot}>
-            <img src={image} alt={name} className={cl.image} />
-          </div>
+          <div>
+            <div className={cl.image_slot}>
+              <img src={image} alt={name} className={cl.image} />
+            </div>
 
-          <h4 className={cl.title}>{name}</h4>
+            <h4 className={cl.title}>{name}</h4>
+          </div>
         </div>
 
         <div className={cl.money_info}>

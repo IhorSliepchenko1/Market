@@ -34,10 +34,10 @@ const Header = ({ basketCount, local, deleteBasketEl }) => {
                 </a>
               </li>
 
-              <li className="header__li" onClick={() => setModalBasket(true)}>
+              <li className="header__li slot-basket" onClick={() => setModalBasket(true)}>
                 <span className="material-icons shop">shopping_cart</span>
+                <CountBasket basketCount={basketCount} />
               </li>
-              <CountBasket basketCount={basketCount} />
             </ul>
           </div>
         </nav>

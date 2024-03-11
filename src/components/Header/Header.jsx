@@ -4,27 +4,12 @@ import MyModal from "../UI/MyModal/MyModal";
 import MyModalContent from "../UI/MyModal/MyModalContent";
 import BasketModal from "../UI/BasketModal/BasketModal";
 import BasketModalContent from "../UI/BasketModal/BasketModalContent";
+import CountBasket from "../UI/CountBasket/CountBasket";
 
-const Header = () => {
+const Header = ({ basketCount, local, deleteBasketEl }) => {
   const [modal, setModal] = useState(false);
   const [modalBasket, setModalBasket] = useState(false);
-  const [local, setLocal] = useState([]);
   const [sum, setSum] = useState(0);
-  const [basketCount, setBasketCount] = useState(0);
-  const storedData = localStorage.getItem("cart");
-
-  const deleteBasketEl = (index) => {
-    const updatedCart = [...local];
-    updatedCart.splice(index, 1);
-    setLocal(updatedCart);
-
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
-  useEffect(() => {
-    if (storedData) {
-      setLocal(JSON.parse(storedData));
-    }
-  }, [storedData]);
 
   useEffect(() => {
     const arrSum = [];
@@ -34,9 +19,6 @@ const Header = () => {
     setSum(arrSum.reduce((a, b) => a + b, 0));
   }, [local]);
 
-  useEffect(() => {
-    setBasketCount(local.length);
-  }, [storedData]);
   return (
     <>
       <header className="header">
@@ -54,8 +36,8 @@ const Header = () => {
 
               <li className="header__li" onClick={() => setModalBasket(true)}>
                 <span className="material-icons shop">shopping_cart</span>
-                <span className="basketCount">{basketCount}</span>
               </li>
+              <CountBasket basketCount={basketCount} />
             </ul>
           </div>
         </nav>

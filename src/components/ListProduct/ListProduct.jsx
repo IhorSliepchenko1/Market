@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Popup from "./../UI/Popup/Popup";
 import ProductCard from "../UI/ProductCard/ProductCard";
 import img from "./../../assets/ProductImage/product.png";
 import img2 from "./../../assets/ProductImage/vegetables.png";
 
-const ListProduct = () => {
+const ListProduct = ({ setArr }) => {
   const products = [
     {
       type: "fruit",
@@ -103,22 +103,14 @@ const ListProduct = () => {
       min: 10,
     },
   ];
-  const [success, setSuccess] = useState(false);
-  const [arr, setArr] = useState(() => {
-    const storedArr = localStorage.getItem("cart");
-    return storedArr ? JSON.parse(storedArr) : [];
-  });
 
+  const [success, setSuccess] = useState(false);
   const [count, setCount] = useState(products.map(() => 0.5));
   const [total, setTotal] = useState(products.map(() => 0));
 
   const handleClick = (el, total, count) => {
     setArr((prevArr) => [...prevArr, { el, total, count }]);
   };
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(arr));
-  }, [arr]);
 
   const increment = (index) => {
     setCount((prevCount) => {

@@ -28,7 +28,9 @@ const BasketModal = ({
 
         {local && local.length > 0 ? (
           <div className={cl.container_sum}>
-            <div className={cl.sum}>Сума покупки: {sum} грн.</div>
+            <div className={cl.sum}>
+              Сума покупки: <span className={cl.span}>{sum} грн.</span>
+            </div>
             <ButtonOrder />
           </div>
         ) : (

@@ -1,6 +1,7 @@
 import cl from "./BasketModal.module.scss";
 import cross from "./../../../assets/Modal/icon-close-cross-button.png";
 import ButtonOrder from "../button/ButtonOrder/ButtonOrder";
+import ButtonClearBasket from "../button/ButtonClearBasket/ButtonClearBasket";
 
 const BasketModal = ({
   children,
@@ -8,6 +9,7 @@ const BasketModal = ({
   setVisibleBasket,
   local,
   sum,
+  onClick,
 }) => {
   const rootClasses = [cl.myModal];
   if (visibleBasket) {
@@ -17,11 +19,23 @@ const BasketModal = ({
   return (
     <div
       className={rootClasses.join(" ")}
-      onClick={() => setVisibleBasket(false)}
+      onClick={() => {
+        setVisibleBasket(false);
+        document.body.classList.remove("no-scroll");
+      }}
     >
       <div className={cl.myModalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={cl.close} onClick={() => setVisibleBasket(false)}>
-          <img src={cross} />
+        <div className={cl.header_basket}>
+          <ButtonClearBasket onClick={onClick} />
+          <div
+            className={cl.close}
+            onClick={() => {
+              setVisibleBasket(false);
+              document.body.classList.remove("no-scroll");
+            }}
+          >
+            <img src={cross} />
+          </div>
         </div>
 
         <div className={cl.overlov}> {children}</div>

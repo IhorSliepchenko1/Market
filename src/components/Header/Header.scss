@@ -80,3 +80,15 @@
 .slot-basket {
   width: 70px;
 }
+
+.empty-basket {
+  font-size: 20px;
+  text-align: center;
+  @include tablet-small {
+    font-size: 15px;
+  }
+}
+
+.no-scroll{
+  overflow: hidden;
+}

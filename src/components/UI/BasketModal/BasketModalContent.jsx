@@ -19,13 +19,15 @@ const BasketModalContent = ({ name, image, count, total, id, deleteItem }) => {
           <div className={cl.money_container}>
             <div className={cl.count}>
               <span className={cl.span_name}> К-сть:</span>
-              <span>{count} кг.</span>
+              <span className={cl.span_value}>{count} кг.</span>
             </div>
+
             <div className={cl.total}>
               <span className={cl.span_name}> Сума:</span>
-              <span>{total} грн.</span>
+              <span className={cl.span_value}>{total} грн.</span>
             </div>
           </div>
+
           <span className={cl.remove} onClick={() => deleteItem(id)}>
             X
           </span>

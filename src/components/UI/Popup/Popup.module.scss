@@ -7,8 +7,9 @@
   gap: 10px;
   position: fixed;
   top: 100px;
-  right: 40rem;
+  right: 5px;
   z-index: 1000000;
+  max-width: 270px;
 }
 .slot {
   display: flex;
@@ -18,7 +19,7 @@
   background: var(--White);
   border-radius: 10px;
   backdrop-filter: blur(12px);
-  padding: 14px 24px;
+  padding: 10px;
   z-index: 10000;
 }
 
@@ -32,19 +33,11 @@
   flex: 1 1 0%;
   padding-right: 12px;
 }
-.title {
-  font-size: 16px;
-  line-height: 1;
-  color: var(--Black);
-}
+
 .desc {
-  width: 100%;
   font-size: 14px;
   line-height: 1;
   color: var(--Black);
-  opacity: 0.4;
-  white-space: pre-wrap;
-  word-break: break-word;
 }
 .btn {
   display: flex;
@@ -66,7 +59,7 @@
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  padding: 12px;
+  padding: 7px;
   border-radius: 15px;
   background: rgba(255, 68, 24, 0.1);
   background: rgba(63, 63, 63, 0.1);

@@ -33,6 +33,12 @@ const App = () => {
     localStorage.setItem("cart", JSON.stringify(arr));
   }, [arr]);
 
+  const removeLocal = () => {
+    localStorage.removeItem("cart");
+    setLocal([]);
+    setArr([]);
+  };
+
   return (
     <div className="wrapper">
       <Header
@@ -40,6 +46,8 @@ const App = () => {
         local={local}
         setLocal={setLocal}
         deleteBasketEl={deleteBasketEl}
+        arr={arr}
+        onClick={() => removeLocal()}
       />
       <SwiperUI />
       <main className="main container">

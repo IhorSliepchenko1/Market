@@ -27,10 +27,15 @@
   font-size: 50rem;
   text-align: center;
   @include tablet {
-    margin: 30px 0;
     font-size: 35rem;
   }
   @include tablet-small {
+    margin: 20px 0;
     margin-bottom: 30rem;
+    font-size: 20px;
   }
+}
+
+.fruits {
+  margin-top: 45px;
 }

@@ -6,7 +6,7 @@ import BasketModal from "../UI/BasketModal/BasketModal";
 import BasketModalContent from "../UI/BasketModal/BasketModalContent";
 import CountBasket from "../UI/CountBasket/CountBasket";
 
-const Header = ({ basketCount, local, deleteBasketEl }) => {
+const Header = ({ basketCount, local, deleteBasketEl, arr, onClick }) => {
   const [modal, setModal] = useState(false);
   const [modalBasket, setModalBasket] = useState(false);
   const [sum, setSum] = useState(0);
@@ -34,7 +34,13 @@ const Header = ({ basketCount, local, deleteBasketEl }) => {
                 </a>
               </li>
 
-              <li className="header__li slot-basket" onClick={() => setModalBasket(true)}>
+              <li
+                className="header__li slot-basket"
+                onClick={() => {
+                  setModalBasket(true);
+                  document.body.classList.add("no-scroll");
+                }}
+              >
                 <span className="material-icons shop">shopping_cart</span>
                 <CountBasket basketCount={basketCount} />
               </li>
@@ -49,11 +55,12 @@ const Header = ({ basketCount, local, deleteBasketEl }) => {
       <BasketModal
         visibleBasket={modalBasket}
         setVisibleBasket={setModalBasket}
-        local={local}
+        local={arr}
         sum={sum}
+        onClick={onClick}
       >
-        {local && local.length > 0 ? (
-          local.map((product, index) => (
+        {arr && arr.length > 0 ? (
+          arr.map((product, index) => (
             <BasketModalContent
               id={index}
               key={index}
@@ -65,9 +72,7 @@ const Header = ({ basketCount, local, deleteBasketEl }) => {
             />
           ))
         ) : (
-          <p style={{ fontSize: 20, textAlign: "center" }}>
-            Ваш кошик порожній
-          </p>
+          <p className="empty-basket">Ваш кошик порожній</p>
         )}
       </BasketModal>
     </>

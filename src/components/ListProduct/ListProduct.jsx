@@ -143,7 +143,7 @@ const ListProduct = ({ setArr }) => {
   return (
     <>
       <div className="card-container">
-        <h3 className="title-product">Фрукти</h3>
+        <h3 className="title-product fruits">Фрукти</h3>
         <div className="product-container">
           {fruitProducts.map((product, index) => (
             <ProductCard

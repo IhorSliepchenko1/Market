@@ -7,7 +7,7 @@ const Popup = ({ onClick }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onClick();
-    }, 3000);
+    }, 700);
 
     return () => clearTimeout(timeoutId);
   }, [onClick]);
@@ -20,7 +20,6 @@ const Popup = ({ onClick }) => {
         </div>
 
         <div className={cl.content}>
-          <h3 className={cl.title}>Auth</h3>
           <p className={cl.desc}>Товар додано до кошика</p>
         </div>
 

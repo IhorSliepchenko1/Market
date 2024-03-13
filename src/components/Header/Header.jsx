@@ -6,7 +6,14 @@ import BasketModal from "../UI/BasketModal/BasketModal";
 import BasketModalContent from "../UI/BasketModal/BasketModalContent";
 import CountBasket from "../UI/CountBasket/CountBasket";
 
-const Header = ({ basketCount, local, deleteBasketEl, arr, onClick }) => {
+const Header = ({
+  basketCount,
+  local,
+  deleteBasketEl,
+  arr,
+  onClick,
+  makeOrder,
+}) => {
   const [modal, setModal] = useState(false);
   const [modalBasket, setModalBasket] = useState(false);
   const [sum, setSum] = useState(0);
@@ -58,6 +65,8 @@ const Header = ({ basketCount, local, deleteBasketEl, arr, onClick }) => {
         local={arr}
         sum={sum}
         onClick={onClick}
+        makeOrder={makeOrder}
+        arr={arr}
       >
         {arr && arr.length > 0 ? (
           arr.map((product, index) => (

@@ -65,7 +65,7 @@
 .count,
 .total {
   font-size: 20px;
-  max-width: 150px;
+  max-width: 200px;
   display: flex;
   justify-content: space-between;
 
@@ -107,7 +107,9 @@
 }
 
 .id {
+  width: 20px;
   font-size: 20px;
+  text-align: center;
 
   @media (max-width: 400px) {
     font-size: 14px;
@@ -118,7 +120,7 @@
   font-weight: bold;
 }
 .container_sum {
-  margin-top: 15px;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
 }
@@ -141,11 +143,11 @@
 }
 
 .span_value {
-  width: 70px;
+  width: 100px;
   text-align: center;
 }
 .overlov {
-  max-height: 300px;
+  max-height: 700rem;
   overflow: auto;
   background: #eceaeacc;
 }

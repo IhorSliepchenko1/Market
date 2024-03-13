@@ -10,6 +10,8 @@ const BasketModal = ({
   local,
   sum,
   onClick,
+  makeOrder,
+  arr,
 }) => {
   const rootClasses = [cl.myModal];
   if (visibleBasket) {
@@ -26,7 +28,7 @@ const BasketModal = ({
     >
       <div className={cl.myModalContent} onClick={(e) => e.stopPropagation()}>
         <div className={cl.header_basket}>
-          <ButtonClearBasket onClick={onClick} />
+          {arr.length > 0 ? <ButtonClearBasket onClick={onClick} /> : <>''</>}
           <div
             className={cl.close}
             onClick={() => {
@@ -45,7 +47,7 @@ const BasketModal = ({
             <div className={cl.sum}>
               Сума покупки: <span className={cl.span}>{sum} грн.</span>
             </div>
-            <ButtonOrder />
+            <ButtonOrder makeOrder={makeOrder} />
           </div>
         ) : (
           <></>

@@ -7,7 +7,7 @@ const Popup = ({ onClick }) => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       onClick();
-    }, 700);
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [onClick]);

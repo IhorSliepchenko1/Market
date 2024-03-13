@@ -39,6 +39,13 @@ const App = () => {
     setArr([]);
   };
 
+  const makeOrder = () => {
+    const testArr = [...arr];
+    const arrReduce = testArr.map((item) => item.total).reduce((a, b) => a + b);
+
+    console.log(testArr, arrReduce);
+  };
+
   return (
     <div className="wrapper">
       <Header
@@ -48,6 +55,7 @@ const App = () => {
         deleteBasketEl={deleteBasketEl}
         arr={arr}
         onClick={() => removeLocal()}
+        makeOrder={makeOrder}
       />
       <SwiperUI />
       <main className="main container">
